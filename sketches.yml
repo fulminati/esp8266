@@ -1,1 +1,27 @@
+## 
+## 
+##
 
+name: fulminati/esp8266
+version: 0.0.1
+
+sketches:
+  esp8266:
+    firmware:
+      download: >-
+        https://github.com/nodemcu/nodemcu-firmware/releases/download/0.9.5_20150318/nodemcu_float_0.9.5_20150318.bin
+      file: nodemcu.bin
+      flash: python -m esptool --port $[port] write_flash 0x00000 $[file]
+    board: esp8266:esp8266:generic
+    install-board: esp8266:esp8266
+    filters:
+      - config
+      - getenv
+      - loadcss
+      - loadhtml
+      - loadjs
+    port: ${PORT}
+    baud: 115200
+
+packages:
+  - http://arduino.esp8266.com/versions/2.4.1/package_esp8266com_index.json
